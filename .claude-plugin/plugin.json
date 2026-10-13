@@ -1,0 +1,13 @@
+{
+  "name": "handoff",
+  "version": "1.0.0",
+  "description": "Run /handoff before you switch agents. It writes HANDOFF.md at the repository root: your request in your own words, decisions made, what changed, what is done and left, the next step, and how to check the work.",
+  "author": {
+    "name": "Kayvan Zahiri",
+    "url": "https://github.com/Kayvan-Zahiri"
+  },
+  "homepage": "https://github.com/Kayvan-Zahiri/claude-code-handoff",
+  "repository": "https://github.com/Kayvan-Zahiri/claude-code-handoff",
+  "license": "MIT",
+  "keywords": ["handoff", "codex", "cursor", "usage-limit", "context", "git"]
+}

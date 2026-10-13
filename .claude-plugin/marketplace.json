@@ -1,0 +1,14 @@
+{
+  "name": "handoff",
+  "description": "The handoff plugin for Claude Code: /handoff writes HANDOFF.md so the next agent can continue your task.",
+  "owner": {
+    "name": "Kayvan Zahiri",
+    "url": "https://github.com/Kayvan-Zahiri"
+  },
+  "plugins": [
+    {
+      "name": "handoff",
+      "source": "./"
+    }
+  ]
+}
