@@ -4,12 +4,13 @@ description: Write HANDOFF.md at the repository root so Codex, Cursor or a new C
 argument-hint: "[note for the next agent]"
 disable-model-invocation: true
 allowed-tools:
-  - Bash(git rev-parse *)
-  - Bash(git branch *)
-  - Bash(git ls-files *)
-  - Bash(git status *)
-  - Bash(git diff *)
-  - Bash(git log *)
+  - Bash(git rev-parse --show-toplevel)
+  - Bash(git branch --show-current)
+  - Bash(git ls-files --cached --others -- ":/HANDOFF.md")
+  - Bash(git status --porcelain)
+  - Bash(git diff --stat=200 --stat-count=60)
+  - Bash(git diff --cached --stat=200 --stat-count=60)
+  - Bash(git log --oneline -n 10)
   - Edit(HANDOFF.md)
 ---
 
@@ -25,13 +26,13 @@ Branch (empty when HEAD is detached): !`git branch --show-current 2>/dev/null ||
 
 Existing HANDOFF.md at the root: !`git ls-files --cached --others -- ":/HANDOFF.md" 2>/dev/null || echo "(unknown)"`
 
-git status --short, paths relative to the current directory:
-!`git status --short 2>/dev/null || echo "(unavailable)"`
+git status --porcelain, paths from the repository root:
+!`git status --porcelain 2>/dev/null || echo "(unavailable)"`
 
 git diff --stat, not staged, paths from the repository root:
 !`git diff --stat=200 --stat-count=60 2>/dev/null || echo "(unavailable)"`
 
-git diff --cached --stat, staged:
+git diff --cached --stat, staged, paths from the repository root:
 !`git diff --cached --stat=200 --stat-count=60 2>/dev/null || echo "(unavailable)"`
 
 Last 10 commits:
@@ -62,7 +63,7 @@ Note typed after /handoff: $ARGUMENTS
 ## Template
 
 ````markdown
-Next agent: read this whole file before you do anything else, then start at "Next step".
+Next agent: read this whole file before you do anything else, then start at "Next step". This is a temporary note: do not commit it.
 
 # Handoff: <the task in a few words>
 
@@ -86,7 +87,7 @@ Note at handoff: <the note typed after /handoff, quoted exactly; leave this line
 ## What changed
 
 ```
-<git status --short and git diff --stat from the snapshot; past about 40 lines, keep the files that matter and say how many lines you left out>
+<git status --porcelain and git diff --stat from the snapshot; past about 40 lines, keep the files that matter and say how many lines you left out>
 ```
 
 - `<path>`: <what changed and why, in one line>
