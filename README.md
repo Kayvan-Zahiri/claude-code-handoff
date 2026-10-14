@@ -92,6 +92,8 @@ Pass the table's filters to `export_orders()` and add a test for an empty result
 - The note is written by the Claude Code session you are already in, so the git snapshot reaches the model the same way the rest of that conversation does. No other service is involved.
 - The skill asks for secrets such as API keys and tokens to be replaced with `[redacted]`. This is best-effort, so read the file before you commit or share it.
 
+The full policy: [Privacy](https://github.com/Kayvan-Zahiri/claude-code-handoff/blob/main/PRIVACY.md).
+
 ## Limits
 
 - It can only quote what the session still holds. After `/compact` or an automatic compaction, your first message may be gone.
